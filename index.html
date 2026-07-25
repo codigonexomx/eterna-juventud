@@ -574,64 +574,6 @@
             box-shadow: var(--shadow-soft);
         }
         .contact-container { max-width: 620px; }
-        .help-contact {
-            background-color: var(--color-white);
-        }
-        .help-panel {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-            gap: clamp(2rem, 6vw, 5rem);
-            align-items: center;
-        }
-        .help-details {
-            display: grid;
-            gap: 1rem;
-        }
-        .help-item {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 1rem;
-            align-items: start;
-            border-top: var(--border-soft);
-            padding-top: 1rem;
-        }
-        .help-item:last-child {
-            border-bottom: var(--border-soft);
-            padding-bottom: 1rem;
-        }
-        .help-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            border: var(--border-soft);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-primary);
-            font-family: var(--font-serif);
-            font-size: 0.95rem;
-            line-height: 1;
-        }
-        .help-item strong {
-            display: block;
-            color: var(--color-secondary);
-            font-family: var(--font-serif);
-            font-size: 1.25rem;
-            font-weight: normal;
-            margin-bottom: 0.25rem;
-        }
-        .help-item span,
-        .help-item a {
-            color: var(--color-text-light);
-            font-size: 0.96rem;
-            line-height: 1.7;
-        }
-        .help-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
         .form-group { margin-bottom: 1.35rem; text-align: left; }
         .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-secondary); font-size: 0.95rem; }
         .form-control {
@@ -658,8 +600,8 @@
             margin-top: 1.4rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 15px;
+            justify-content: space-between;
+            gap: 1rem;
             color: var(--color-secondary);
             font-weight: 500;
             font-size: 1rem;
@@ -667,6 +609,27 @@
             padding: 14px 18px;
             border-radius: 999px;
             background-color: rgba(255,255,255,0.68);
+        }
+        .contact-hours {
+            color: var(--color-text-light);
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            flex: 0 0 auto;
+            padding: 0.85rem 1.1rem;
+            border-radius: 999px;
+            background-color: var(--color-white);
+            border: var(--border-soft);
+            color: var(--color-secondary);
+            transition: var(--transition);
+        }
+        .whatsapp-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(53, 32, 59, 0.10);
         }
         .wa-icon {
             width: 34px;
@@ -680,6 +643,36 @@
             font-size: 0.9rem;
             box-shadow: 0 4px 10px rgba(37,211,102,0.18);
             flex: 0 0 auto;
+        }
+        .wa-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+        .floating-whatsapp {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            z-index: 20;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: #25D366;
+            color: var(--color-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 18px 40px rgba(37, 211, 102, 0.28);
+            animation: whatsappIntro 0.7s ease-out 0.4s both;
+        }
+        .floating-whatsapp svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+        @keyframes whatsappIntro {
+            from { opacity: 0; transform: translateY(12px) scale(0.94); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         footer {
@@ -714,7 +707,6 @@
             .benefits-header,
             .texture-grid,
             .expectations-panel,
-            .help-panel,
             .contact-panel {
                 grid-template-columns: 1fr;
             }
@@ -1169,71 +1161,41 @@
                         <p class="section-kicker">Compra</p>
                         <h2 class="section-title">Consigue tu Eterna Juventud</h2>
                         <p class="section-copy">Déjanos tus datos o escríbenos para resolver tus dudas. Te acompañaremos con una atención clara y cercana.</p>
-                        <form id="contactForm">
+                        <form id="contactForm" action="mailto:mariiviolantes@gmail.com" method="post" enctype="text/plain">
                             <div class="form-group">
-                                <label for="name">Nombre completo</label>
-                                <input type="text" id="name" class="form-control" required placeholder="Tu nombre" autocomplete="name">
+                                <label for="name">Nombre</label>
+                                <input type="text" id="name" name="Nombre" class="form-control" required placeholder="Tu nombre" autocomplete="name">
                             </div>
                             <div class="form-group">
                                 <label for="email">Correo electrónico</label>
-                                <input type="email" id="email" class="form-control" required placeholder="tu@correo.com" autocomplete="email">
+                                <input type="email" id="email" name="Correo electrónico" class="form-control" required placeholder="tu@correo.com" autocomplete="email">
                             </div>
                             <div class="form-group">
-                                <label for="message">¿Cuántas unidades deseas o qué duda tienes?</label>
-                                <textarea id="message" class="form-control" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                                <label for="message">Mensaje</label>
+                                <textarea id="message" name="Mensaje" class="form-control" required placeholder="Escribe tu mensaje aquí..."></textarea>
                             </div>
-                            <button type="submit" class="btn" style="width: 100%;">Enviar mensaje</button>
-                            <div id="formMessage" class="form-message" role="status" aria-live="polite">Gracias por tu mensaje. Te contactaremos pronto.</div>
+                            <button type="submit" class="btn" style="width: 100%;">Enviar consulta</button>
+                            <div id="formMessage" class="form-message" role="status" aria-live="polite">Se abrirá tu correo para enviar la consulta.</div>
                         </form>
 
                         <div class="whatsapp-container">
-                            <div class="wa-icon" aria-hidden="true">W</div>
-                            <span>También puedes escribirnos por WhatsApp para recibir atención personalizada.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="help-contact" aria-labelledby="ayuda-title">
-            <div class="container help-panel">
-                <div class="reveal">
-                    <p class="section-kicker">Atención personalizada</p>
-                    <h2 id="ayuda-title" class="section-title">¿Tienes alguna duda? Estamos para ayudarte.</h2>
-                    <p class="section-copy">Si deseas más información sobre Eterna Juventud, conocer la forma correcta de uso o realizar un pedido, puedes comunicarte con nosotros. Con gusto responderemos tus preguntas y te brindaremos atención personalizada.</p>
-                    <div class="help-actions" aria-label="Opciones de contacto">
-                        <a class="btn" href="https://wa.me/525584097270" target="_blank" rel="noopener noreferrer">Contactar por WhatsApp</a>
-                        <a class="btn btn-secondary" href="mailto:mariiviolantes@gmail.com">Enviar correo</a>
-                    </div>
-                </div>
-                <div class="contact-card reveal">
-                    <div class="help-details">
-                        <div class="help-item">
-                            <span class="help-icon" aria-hidden="true">@</span>
-                            <div>
-                                <strong>Correo electrónico</strong>
-                                <a href="mailto:mariiviolantes@gmail.com">mariiviolantes@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="help-item">
-                            <span class="help-icon" aria-hidden="true">WA</span>
-                            <div>
-                                <strong>WhatsApp</strong>
-                                <a href="https://wa.me/525584097270" target="_blank" rel="noopener noreferrer">+52 55 8409 7270</a>
-                            </div>
-                        </div>
-                        <div class="help-item">
-                            <span class="help-icon" aria-hidden="true">H</span>
-                            <div>
-                                <strong>Horario</strong>
-                                <span>Lunes a viernes<br>9:00 a.m. – 6:00 p.m.<br>(Hora del Centro de México)</span>
-                            </div>
+                            <p class="contact-hours">Lunes a viernes<br>9:00 a.m. – 6:00 p.m.<br>(Hora del Centro de México)</p>
+                            <a class="whatsapp-button" href="https://wa.me/525584097270" target="_blank" rel="noopener noreferrer" aria-label="Hablar por WhatsApp">
+                                <span class="wa-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 32 32" focusable="false" aria-hidden="true"><path d="M19.11 17.22c-.27-.14-1.62-.8-1.87-.89-.25-.09-.43-.14-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.62-1.52-1.89-.16-.27-.02-.42.12-.55.13-.13.27-.32.41-.48.14-.16.18-.27.27-.46.09-.18.05-.34-.02-.48-.07-.14-.62-1.49-.84-2.04-.22-.53-.45-.46-.62-.47h-.53c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29s.98 2.65 1.12 2.83c.14.18 1.94 2.96 4.7 4.15.66.28 1.17.45 1.57.58.66.21 1.26.18 1.73.11.53-.08 1.62-.66 1.85-1.3.23-.64.23-1.19.16-1.3-.07-.11-.25-.18-.52-.32z"/><path d="M16.02 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.59 4.47 1.72 6.42L3.1 29.08l6.82-1.79c1.88 1.03 4 1.57 6.1 1.57 7.06 0 12.8-5.74 12.8-12.8s-5.74-12.86-12.8-12.86zm0 23.49c-1.91 0-3.78-.51-5.42-1.48l-.39-.23-4.05 1.06 1.08-3.95-.25-.41A10.54 10.54 0 0 1 5.4 16c0-5.86 4.76-10.62 10.62-10.62S26.64 10.14 26.64 16s-4.76 10.69-10.62 10.69z"/></svg>
+                                </span>
+                                Hablar por WhatsApp
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <a class="floating-whatsapp" href="https://wa.me/525584097270" target="_blank" rel="noopener noreferrer" aria-label="Hablar por WhatsApp">
+        <svg viewBox="0 0 32 32" focusable="false" aria-hidden="true"><path d="M19.11 17.22c-.27-.14-1.62-.8-1.87-.89-.25-.09-.43-.14-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.62-1.52-1.89-.16-.27-.02-.42.12-.55.13-.13.27-.32.41-.48.14-.16.18-.27.27-.46.09-.18.05-.34-.02-.48-.07-.14-.62-1.49-.84-2.04-.22-.53-.45-.46-.62-.47h-.53c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29s.98 2.65 1.12 2.83c.14.18 1.94 2.96 4.7 4.15.66.28 1.17.45 1.57.58.66.21 1.26.18 1.73.11.53-.08 1.62-.66 1.85-1.3.23-.64.23-1.19.16-1.3-.07-.11-.25-.18-.52-.32z"/><path d="M16.02 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.26.59 4.47 1.72 6.42L3.1 29.08l6.82-1.79c1.88 1.03 4 1.57 6.1 1.57 7.06 0 12.8-5.74 12.8-12.8s-5.74-12.86-12.8-12.86zm0 23.49c-1.91 0-3.78-.51-5.42-1.48l-.39-.23-4.05 1.06 1.08-3.95-.25-.41A10.54 10.54 0 0 1 5.4 16c0-5.86 4.76-10.62 10.62-10.62S26.64 10.14 26.64 16s-4.76 10.69-10.62 10.69z"/></svg>
+    </a>
 
     <footer>
         <div class="container reveal">
@@ -1278,19 +1240,22 @@
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const btn = form.querySelector('button');
-                btn.textContent = 'Enviando...';
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const message = document.getElementById('message').value.trim();
+                const subject = encodeURIComponent('Consulta sobre Eterna Juventud');
+                const body = encodeURIComponent(`Nombre: ${name}\nCorreo electrónico: ${email}\n\nMensaje:\n${message}`);
+
+                btn.textContent = 'Abriendo correo...';
                 btn.disabled = true;
+                formMessage.classList.add('success');
+                window.location.href = `mailto:mariiviolantes@gmail.com?subject=${subject}&body=${body}`;
 
                 setTimeout(() => {
-                    form.reset();
-                    btn.textContent = 'Enviar mensaje';
+                    btn.textContent = 'Enviar consulta';
                     btn.disabled = false;
-                    formMessage.classList.add('success');
-
-                    setTimeout(() => {
-                        formMessage.classList.remove('success');
-                    }, 5000);
-                }, 1000);
+                    formMessage.classList.remove('success');
+                }, 5000);
             });
 
             const revealElements = document.querySelectorAll('.reveal');
