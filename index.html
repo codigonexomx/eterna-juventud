@@ -574,6 +574,64 @@
             box-shadow: var(--shadow-soft);
         }
         .contact-container { max-width: 620px; }
+        .help-contact {
+            background-color: var(--color-white);
+        }
+        .help-panel {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: clamp(2rem, 6vw, 5rem);
+            align-items: center;
+        }
+        .help-details {
+            display: grid;
+            gap: 1rem;
+        }
+        .help-item {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            align-items: start;
+            border-top: var(--border-soft);
+            padding-top: 1rem;
+        }
+        .help-item:last-child {
+            border-bottom: var(--border-soft);
+            padding-bottom: 1rem;
+        }
+        .help-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: var(--border-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            line-height: 1;
+        }
+        .help-item strong {
+            display: block;
+            color: var(--color-secondary);
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: normal;
+            margin-bottom: 0.25rem;
+        }
+        .help-item span,
+        .help-item a {
+            color: var(--color-text-light);
+            font-size: 0.96rem;
+            line-height: 1.7;
+        }
+        .help-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
         .form-group { margin-bottom: 1.35rem; text-align: left; }
         .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-secondary); font-size: 0.95rem; }
         .form-control {
@@ -656,6 +714,7 @@
             .benefits-header,
             .texture-grid,
             .expectations-panel,
+            .help-panel,
             .contact-panel {
                 grid-template-columns: 1fr;
             }
@@ -1130,6 +1189,45 @@
                         <div class="whatsapp-container">
                             <div class="wa-icon" aria-hidden="true">W</div>
                             <span>También puedes escribirnos por WhatsApp para recibir atención personalizada.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="help-contact" aria-labelledby="ayuda-title">
+            <div class="container help-panel">
+                <div class="reveal">
+                    <p class="section-kicker">Atención personalizada</p>
+                    <h2 id="ayuda-title" class="section-title">¿Tienes alguna duda? Estamos para ayudarte.</h2>
+                    <p class="section-copy">Si deseas más información sobre Eterna Juventud, conocer la forma correcta de uso o realizar un pedido, puedes comunicarte con nosotros. Con gusto responderemos tus preguntas y te brindaremos atención personalizada.</p>
+                    <div class="help-actions" aria-label="Opciones de contacto">
+                        <a class="btn" href="https://wa.me/525584097270" target="_blank" rel="noopener noreferrer">Contactar por WhatsApp</a>
+                        <a class="btn btn-secondary" href="mailto:mariiviolantes@gmail.com">Enviar correo</a>
+                    </div>
+                </div>
+                <div class="contact-card reveal">
+                    <div class="help-details">
+                        <div class="help-item">
+                            <span class="help-icon" aria-hidden="true">@</span>
+                            <div>
+                                <strong>Correo electrónico</strong>
+                                <a href="mailto:mariiviolantes@gmail.com">mariiviolantes@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="help-item">
+                            <span class="help-icon" aria-hidden="true">WA</span>
+                            <div>
+                                <strong>WhatsApp</strong>
+                                <a href="https://wa.me/525584097270" target="_blank" rel="noopener noreferrer">+52 55 8409 7270</a>
+                            </div>
+                        </div>
+                        <div class="help-item">
+                            <span class="help-icon" aria-hidden="true">H</span>
+                            <div>
+                                <strong>Horario</strong>
+                                <span>Lunes a viernes<br>9:00 a.m. – 6:00 p.m.<br>(Hora del Centro de México)</span>
+                            </div>
                         </div>
                     </div>
                 </div>
