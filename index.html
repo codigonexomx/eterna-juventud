@@ -1161,21 +1161,26 @@
                         <p class="section-kicker">Compra</p>
                         <h2 class="section-title">Consigue tu Eterna Juventud</h2>
                         <p class="section-copy">Déjanos tus datos o escríbenos para resolver tus dudas. Te acompañaremos con una atención clara y cercana.</p>
-                        <form id="contactForm" action="mailto:mariiviolantes@gmail.com" method="post" enctype="text/plain">
+                        <form id="contactForm" action="https://formsubmit.co/mariiviolantes@gmail.com" method="POST">
+                            <input type="hidden" name="_subject" value="Nueva consulta desde Eterna Juventud">
+                            <input type="hidden" name="_template" value="box">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://cremaeternajuventud.com/gracias.html">
+                            <input type="hidden" name="_autoresponse" value="Gracias por comunicarte con Eterna Juventud.&#10;&#10;Hemos recibido correctamente tu mensaje.&#10;&#10;Nos pondremos en contacto contigo lo antes posible.&#10;&#10;Muchas gracias por tu confianza.">
                             <div class="form-group">
                                 <label for="name">Nombre</label>
                                 <input type="text" id="name" name="Nombre" class="form-control" required placeholder="Tu nombre" autocomplete="name">
                             </div>
                             <div class="form-group">
                                 <label for="email">Correo electrónico</label>
-                                <input type="email" id="email" name="Correo electrónico" class="form-control" required placeholder="tu@correo.com" autocomplete="email">
+                                <input type="email" id="email" name="email" class="form-control" required placeholder="tu@correo.com" autocomplete="email">
                             </div>
                             <div class="form-group">
                                 <label for="message">Mensaje</label>
                                 <textarea id="message" name="Mensaje" class="form-control" required placeholder="Escribe tu mensaje aquí..."></textarea>
                             </div>
                             <button type="submit" class="btn" style="width: 100%;">Enviar consulta</button>
-                            <div id="formMessage" class="form-message" role="status" aria-live="polite">Se abrirá tu correo para enviar la consulta.</div>
+                            <div id="formMessage" class="form-message" role="status" aria-live="polite">Gracias por escribirnos. Tu consulta se está enviando de forma segura.</div>
                         </form>
 
                         <div class="whatsapp-container">
@@ -1237,25 +1242,12 @@
             const form = document.getElementById('contactForm');
             const formMessage = document.getElementById('formMessage');
 
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
+            form.addEventListener('submit', () => {
                 const btn = form.querySelector('button');
-                const name = document.getElementById('name').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const message = document.getElementById('message').value.trim();
-                const subject = encodeURIComponent('Consulta sobre Eterna Juventud');
-                const body = encodeURIComponent(`Nombre: ${name}\nCorreo electrónico: ${email}\n\nMensaje:\n${message}`);
 
-                btn.textContent = 'Abriendo correo...';
+                btn.textContent = 'Enviando consulta...';
                 btn.disabled = true;
                 formMessage.classList.add('success');
-                window.location.href = `mailto:mariiviolantes@gmail.com?subject=${subject}&body=${body}`;
-
-                setTimeout(() => {
-                    btn.textContent = 'Enviar consulta';
-                    btn.disabled = false;
-                    formMessage.classList.remove('success');
-                }, 5000);
             });
 
             const revealElements = document.querySelectorAll('.reveal');
